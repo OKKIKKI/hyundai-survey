@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';import {options as o}from '../lib/options.mjs';
+const base='http://127.0.0.1:5173';const login=await fetch(base+'/signin-with-chatgpt?return_to=/admin.html',{redirect:'manual'});const cookie=login.headers.getSetCookie().map(s=>s.split(';')[0]).join('; ');assert.ok(cookie);
+const headers={Origin:base,'Content-Type':'application/json',Cookie:cookie};const request=async(path,method='GET',body)=>{const r=await fetch(base+'/api/'+path,{method,headers,body:body?JSON.stringify(body):undefined});assert.ok(r.ok,await r.clone().text());return r.json()};
+const cfg=await request('config');assert.equal(cfg.prizeEnabled,true);assert.equal('ADMIN_EMAILS'in cfg,false);
+const p={id:crypto.randomUUID(),receipt:crypto.randomUUID(),answers:{Q1:[o.q1[0]],Q2:[o.q2[0]],Q3:o.age[1],Q4:o.q1[0],Q5:o.q2[0],Q6:[o.q5[0]],Q7:'LOCAL TEST CONTACT',Q8:'',Q9:[o.q8[0]],Q10:o.q9[0],Q11:[o.q10[0]],Q12:o.q11[0]},other:{},interview:o.interview[0],prize:true,contact:{phone:'01000000000',consent:true,version:cfg.consentVersion}};
+await request('responses','POST',p);
+let list=await request('admin/contacts');const contact=list.rows.find(r=>r.response_id===p.id);assert.ok(contact);assert.equal(contact.expires_at,'');assert.ok(contact.consent_at);
+const rows=await request('admin/responses');assert.ok(!JSON.stringify(rows).includes('01000000000'));assert.ok(rows.rows.find(r=>r.id===p.id));
+const stats=await request('admin/stats');assert.ok(stats.total>=3);assert.ok(stats.counts.find(r=>r.question==='Q11'));
+await request('admin/shipment','POST',{date:'2026-11-04'});list=await request('admin/contacts');const shipped=list.rows.find(r=>r.response_id===p.id);assert.equal(shipped.shipment_completed_at,'2026-11-04');assert.equal(shipped.expires_at,'2026-12-03T15:00:00.000Z');
+await request('admin/contacts','DELETE',{id:p.id});list=await request('admin/contacts');assert.ok(!list.rows.find(r=>r.response_id===p.id));assert.ok((await request('admin/responses')).rows.find(r=>r.id===p.id));
+console.log('PASS: authenticated stats, contact separation, consent record, shipment deadline, contact deletion preserving survey');

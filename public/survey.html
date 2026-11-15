@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="#f6f7f9" name="theme-color"/>
+  <title>
+   OKIKI · 같은 차, 다른 이야기
+  </title>
+  <style>
+
+:root {
+  color-scheme: light;
+  --bg: #f7f8fa;
+  --card: #fff;
+  --line: #e3e7ee;
+  --text: #1b2430;
+  --muted: #5d6878;
+  --accent: #1769cf;
+  --accentlight: #eaf3ff;
+  --success: #176443;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  letter-spacing: -.015em;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 790px;
+  margin: 0 auto;
+  padding: 30px 20px 70px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 38px;
+}
+
+.logo {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  color: #2b435e;
+}
+
+.tag {
+  font-size: 12px;
+  color: #667385;
+  background: #edf1f6;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 6px 10px;
+}
+
+.hero {
+  padding: 0 2px 28px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: 750;
+  font-size: 12px;
+  letter-spacing: .07em;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(29px,5vw,41px);
+  line-height: 1.35;
+  font-weight: 800;
+  letter-spacing: -.045em;
+  margin: 0 0 12px;
+}
+
+.grad {
+  color: var(--text);
+}
+
+.intro {
+  font-size: 14px;
+  max-width: 630px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.pill {
+  font-size: 12px;
+  color: #536173;
+  background: #edf1f6;
+  border: 1px solid #e3e8ef;
+  border-radius: 6px;
+  padding: 5px 9px;
+}
+
+.section {
+  margin: 16px 0;
+  padding: 29px 30px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(31,44,61,.025);
+}
+
+.section-head {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding-bottom: 19px;
+  margin-bottom: 21px;
+  border-bottom: 1px solid var(--line);
+}
+
+.index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 34px;
+  height: 34px;
+  background: #e7f1ff;
+  color: #1259b1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.section h2 {
+  font-size: 19px;
+  line-height: 1.4;
+  margin: 3px 0 5px;
+  font-weight: 800;
+}
+
+.sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.question+.question {
+  border-top: 1px solid #edf0f4;
+  margin-top: 26px;
+  padding-top: 25px;
+}
+
+.q-head {
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.65;
+  margin: 0 0 6px;
+}
+
+.qno {
+  color: #1467c7;
+  margin-right: 5px;
+}
+
+.desc {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 13px;
+}
+
+.required,.opt {
+  font-size: 11px;
+  font-weight: 650;
+  margin-left: 5px;
+  white-space: nowrap;
+}
+
+.required {
+  color: #1769cf;
+}
+
+.opt {
+  color: #6a7583;
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.choices.single-column {
+  grid-template-columns: 1fr;
+}
+
+.pleos-figure {
+  margin: 12px 0 18px;
+}
+
+.pleos-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 9px;
+  border: 1px solid var(--line);
+}
+
+.pleos-figure figcaption {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.privacy-note {
+  margin-top: 20px;
+  background: #f7f9fc;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 17px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.privacy-note p {
+  margin: 7px 0;
+}
+
+.privacy-warning {
+  color: #a15324;
+}
+
+.consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.consent input {
+  margin-top: 4px;
+  accent-color: var(--accent);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.option {
+  display: block;
+  position: relative;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.face {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-height: 50px;
+  padding: 11px 13px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #dce2ea;
+  color: #253247;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: background .12s,border-color .12s;
+}
+
+.option:hover .face {
+  background: #f5f9ff;
+  border-color: #9abde8;
+}
+
+.option input:focus-visible+.face {
+  outline: 3px solid rgba(23,105,207,.35);
+  outline-offset: 2px;
+}
+
+.mark {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid #aab5c4;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #fff;
+  font-size: 12px;
+}
+
+.radio .mark {
+  border-radius: 50%;
+}
+
+.option input:checked+.face {
+  background: #ebf4ff;
+  border-color: #1769cf;
+  color: #143e75;
+  font-weight: 700;
+}
+
+.option input:checked+.face .mark {
+  background: #1769cf;
+  border-color: #1769cf;
+}
+
+.option input:checked+.face .mark:before {
+  content: "✓";
+  font-weight: 800;
+}
+
+.option.radio input:checked+.face .mark:before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+}
+
+.other-wrap {
+  margin-top: 9px;
+}
+
+.other-wrap[hidden] {
+  display: none;
+}
+
+.other-input,textarea {
+  width: 100%;
+  border: 1px solid #d3dbe6;
+  border-radius: 8px;
+  background: #fff;
+  padding: 12px 13px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  outline: none;
+}
+
+.other-input:focus,textarea:focus {
+  border-color: #1769cf;
+  box-shadow: 0 0 0 3px rgba(23,105,207,.12);
+}
+
+.other-input::placeholder,textarea::placeholder {
+  color: #788595;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 118px;
+}
+
+.hint {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d8e8f9;
+  background: #f2f7fd;
+  color: #344b64;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 17px;
+}
+
+.skip {
+  margin-bottom: 20px;
+}
+
+.counter {
+  font-size: 12px;
+  margin-left: 5px;
+  color: var(--muted);
+}
+
+.empty {
+  grid-column: 1/-1;
+  border: 1px dashed #c9d2de;
+  border-radius: 8px;
+  padding: 14px;
+  color: #647286;
+  font-size: 13px;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.btn {
+  border: 1px solid #cfd7e3;
+  background: white;
+  color: #26354a;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #f0f5fb;
+}
+
+.btn.primary {
+  background: #1769cf;
+  border-color: #1769cf;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #1159af;
+}
+
+.feedback {
+  font-size: 12px;
+  color: var(--success);
+  width: 100%;
+  min-height: 16px;
+}
+
+.result {
+  display: none;
+  margin-top: 16px;
+  padding: 19px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #283647;
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.result.visible {
+  display: block;
+}
+
+.footer {
+  padding-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: #687587;
+  line-height: 1.9;
+}
+
+@media (max-width:620px) {
+  .wrap {
+    padding: 20px 14px 48px;
+  }
+
+  .nav {
+    margin-bottom: 27px;
+  }
+
+  .hero {
+    padding-bottom: 17px;
+  }
+
+  .section {
+    padding: 22px 17px;
+    border-radius: 10px;
+  }
+
+  .choices {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head {
+    gap: 11px;
+  }
+
+  .section h2 {
+    font-size: 18px;
+  }
+
+  .tag {
+    font-size: 10px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
+
+/* Landing page: concise participation information below the start button. */
+#start-page .survey-overview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  width: 100%;
+  margin: 16px auto 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+#start-page .survey-overview p {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin: 0;
+  font-size: 12px;
+  color: #52637b;
+}
+
+#start-page .survey-overview svg {
+  flex-shrink: 0;
+}
+
+@media (max-width: 620px) {
+  #start-page .survey-overview {
+    gap: 10px 14px;
+  }
+}
+
+
+  .privacy-note > summary { cursor: pointer; }
+#new-response-btn { margin: 12px 0; }
+#new-response-note { margin: 0; }
+.start-shell:has(#start-page:not([hidden])) { position: relative; }
+.survey-preview-notice {
+  position: absolute;
+  z-index: 10;
+  inset: 50% 0 auto;
+  transform: translateY(-50%);
+  width: min(420px, calc(100% - 32px));
+  margin: 0 auto;
+  background: rgb(217 236 255 / 88%);
+  text-align: center;
+  pointer-events: none;
+}
+.survey-preview-notice strong {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+</style>
+  <link href="/site.css?v=16" rel="stylesheet"/>
+  <script type="importmap">
+   {"imports":{"three":"/vendor/three.module.js","three/addons/":"/vendor/addons/"}}
+  </script>
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3"></head>
+ <body>
+  <div class="wrap">
+   <div class="start-shell">
+    <p class="hint survey-preview-notice" role="status"><strong>조사 종료 · 설문 미리보기</strong>선택지에 따라 달라지는 문항을 살펴볼 수 있습니다.</p>
+<header class="nav">
+    <a class="logo" href="/">
+     OKIKI
+     <span class="brand-dot">
+       .
+     </span>
+    </a>
+    <span class="tag">
+     차량 이용 경험 리서치
+    </span>
+   </header>
+   <section class="landing" id="start-page">
+    <div class="eyebrow">
+     EVERY DRIVE HAS A STORY
+    </div>
+    <h1>
+     같은 차,
+     <span>
+      다른 이야기.
+     </span>
+    </h1>
+    <div class="start-intro"><p>혼자일 때와 함께일 때, 차 안에서의 시간은 달라집니다.</p><p>좋았던 순간도, 아쉬웠던 경험도 자유롭게 들려주세요.</p></div>
+    <div aria-label="짙은 네이비 색상의 3D 세단" class="car-stage" id="car-stage" role="img">
+     <div class="road">
+     </div>
+     <img alt="네이비 세단" id="car-fallback" src="/assets/hyundai_sedan_preview.png"/>
+     <canvas aria-hidden="true" id="car-canvas">
+     </canvas>
+     <span class="stage-label">
+      YOUR STORY STARTS HERE
+     </span>
+    </div>
+    <button class="btn primary start-btn" id="start-btn" type="button">
+     이야기 시작하기
+     <span>
+      →
+     </span>
+    </button>
+    <div aria-label="설문 참여 안내" class="survey-overview">
+     <p>
+      <svg aria-hidden="true" fill="none" height="16" stroke="#1769cf" stroke-width="1.5" viewBox="0 0 24 24" width="16">
+       <circle cx="12" cy="12" r="9">
+       </circle>
+       <path d="M12 6v6l4 2">
+       </path>
+      </svg>
+      약 3~5분
+     </p>
+     <p>
+      <svg aria-hidden="true" fill="none" height="16" stroke="#1769cf" stroke-width="1.5" viewBox="0 0 24 24" width="16">
+       <path d="m5 8 2-4h10l2 4M4 8h16v9H4zM7 17v3m10-3v3M4 12h16">
+       </path>
+      </svg>
+      차량 이용 경험자
+     </p>
+     <p>
+      <svg aria-hidden="true" fill="none" height="16" stroke="#1769cf" stroke-width="1.5" viewBox="0 0 24 24" width="16">
+       <path d="M4 9h16v4H4zM6 13v8h12v-8M12 9v12M12 9C5 9 5 3 8 3c3 0 4 6 4 6Zm0 0c7 0 7-6 4-6-3 0-4 6-4 6Z">
+       </path>
+      </svg>
+      기프티콘 추첨
+     </p>
+    </div>
+    <div class="event-note"><p class="micro" hidden id="event-details"></p></div>
+   </section>
+   </div>
+<div hidden="" id="survey-page">
+    <section class="hero">
+     <div class="eyebrow">
+      차량 이용 경험 설문조사
+     </div>
+     <h1>
+      차량 이용 경험 설문조사
+     </h1>
+     <p class="intro">
+      누구와, 어떤 목적으로 차량을 이용하느냐에 따라 달라지는 경험을 알아보는 설문입니다.
+     </p>
+      <p class="intro">
+      불편함뿐 아니라 즐거운 순간과 더 좋아질 수 있는 경험도 자유롭게 들려주세요.
+     </p>
+     <div class="meta">
+      <span class="pill">
+       차량 이용 경험자 대상
+      </span>
+      <span class="pill">
+       경험 및 차량용 앱 조사
+      </span>
+      <span class="pill">
+       약 3~5분
+      </span>
+     </div>
+    </section>
+    <div id="survey">
+     <section class="section" id="s1">
+      <div class="section-head">
+       <span class="index">
+        01
+       </span>
+       <div>
+        <h2>
+         공통 질문
+        </h2>
+        <p class="sub">
+         평소 차량 이용 목적과 함께하는 사람을 알려주세요.
+        </p>
+       </div>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q1.
+        </span>
+        차량을 주로 어떤 목적으로 이용하나요?
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        복수 선택 가능
+       </p>
+       <div class="choices" id="q1-options">
+       </div>
+       <div class="other-wrap" hidden="" id="q1-other-wrap">
+        <input aria-label="기타 차량 이용 목적" class="other-input" id="q1-other" placeholder="기타 이용 목적을 입력해주세요"/>
+       </div>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q2.
+        </span>
+        차량 이용 시 주로 누구와 함께하나요?
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        복수 선택 가능
+       </p>
+       <div class="choices" id="q2-options">
+       </div>
+       <div class="other-wrap" hidden="" id="q2-other-wrap">
+        <input aria-label="기타 동승자 유형" class="other-input" id="q2-other" placeholder="기타 동승자 유형을 입력해주세요"/>
+       </div>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q3.
+        </span>
+        연령대가 어떻게 되시나요?
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        단일 선택 · 설문 분석용
+       </p>
+       <div class="choices" id="age-options">
+       </div>
+      </div>
+     </section>
+     <section class="section" id="s2">
+      <div class="section-head">
+       <span class="index">
+        02
+       </span>
+       <div>
+        <h2>
+         대표 이용 상황 선정
+        </h2>
+        <p class="sub">
+         앞서 선택한 응답 중 하나를 골라주세요.
+        </p>
+       </div>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q4.
+        </span>
+        선택하신 차량 이용 목적 중 가장 자주 경험하는 상황은 무엇인가요?
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        단일 선택 · Q1에서 선택한 항목만 표시
+       </p>
+       <div class="choices" id="q3-options">
+        <p class="empty">
+         Q1을 먼저 선택해주세요.
+        </p>
+       </div>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q5.
+        </span>
+        해당 목적으로 차량을 이용할 때 주로 누구와 함께하시나요?
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        단일 선택 · Q2에서 선택한 항목만 표시
+       </p>
+       <div class="choices" id="q4-options">
+        <p class="empty">
+         Q2를 먼저 선택해주세요.
+        </p>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="s3">
+      <div class="section-head">
+       <span class="index">
+        03
+       </span>
+       <div>
+        <h2>
+         차량 이용 경험 및 니즈
+        </h2>
+        <p class="sub">
+         선택한 대표 상황을 떠올리며 답변해주세요.
+        </p>
+       </div>
+      </div>
+      <div class="hint" id="scenario-hint">
+       Q4와 Q5를 선택하면 여기에 대표 이용 상황이 표시됩니다.
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q6.
+        </span>
+        해당 상황에서 차량을 이용할 때 가장 중요하게 생각하는 것은 무엇인가요?
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        최대 2개 선택
+        <span class="counter" id="q5-counter">
+         0 / 2
+        </span>
+       </p>
+       <div class="choices" id="q5-options">
+       </div>
+       <div class="other-wrap" hidden="" id="q5-other-wrap">
+        <input aria-label="기타 중요 요소" class="other-input" id="q5-other" placeholder="중요하게 생각하는 요소를 입력해주세요"/>
+       </div>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q7.
+        </span>
+        해당 상황에서 차량 이용 경험을 더욱 만족스럽게 만들기 위해 어떤 기능이나 서비스가 있으면 좋겠나요?
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        불편한 점도, 현재 즐기고 있는 것도 모두 좋아요.
+       </p>
+       <textarea aria-required="true" id="q6" placeholder="떠오르는 아이디어나 경험을 자유롭게 작성해주세요." required=""></textarea>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q8.
+        </span>
+        차량 이용 경험과 관련해 더 나누고 싶은 이야기가 있다면 자유롭게 작성해 주세요.
+        <span class="opt">
+         선택
+        </span>
+       </p>
+       <p class="desc">
+        기억에 남는 경험이나 떠오르는 생각 등 어떤 이야기라도 좋아요.
+       </p>
+       <textarea id="q7-extra" placeholder="추가로 나누고 싶은 이야기가 있다면 작성해 주세요."></textarea>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q9.
+        </span>
+        이런 앱이 있다면 써보고 싶은 것을 골라주세요.
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        최대 2개 선택
+        <span class="counter" id="q8-counter">
+         0 / 2
+        </span>
+       </p>
+       <div class="choices single-column" id="q8-options">
+       </div>
+       <div class="other-wrap" hidden="" id="q8-other-wrap">
+        <input aria-label="기타 앱 아이디어" class="other-input" id="q8-other" placeholder="사용해 보고 싶은 다른 앱을 입력해주세요"/>
+       </div>
+      </div>
+     </section>
+     <section class="section" id="digital-section">
+      <div class="section-head">
+       <span class="index">
+        04
+       </span>
+       <div>
+        <h2>
+         차량 디지털 기능 이용 경험
+        </h2>
+        <p class="sub">
+         평소 이용 방식과 Pleos Connect에 대한 생각을 알려주세요.
+        </p>
+       </div>
+      </div>
+      <div class="hint skip">
+       Q10과 Q12는 모든 분께 질문드립니다. Q11은 Q10에서 선택한 시스템을 사용하는 경우에만 표시됩니다.
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q10.
+        </span>
+        차량 이용 시 내비게이션·미디어 등을 주로 어떤 방식으로 사용하시나요?
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        단일 선택
+       </p>
+       <div class="choices" id="q9-options">
+       </div>
+      </div>
+      <div class="question" hidden="" id="q10-question">
+       <p class="q-head">
+        <span class="qno">
+         Q11.
+        </span>
+        해당 시스템을 주로 사용하는 이유는 무엇인가요?
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        복수 선택 가능 · Q10에서 ‘아무것도 사용하지 않음’을 제외한 항목을 선택하면 필수 응답
+       </p>
+       <div class="choices" id="q10-options">
+       </div>
+       <div class="other-wrap" hidden="" id="q10-other-wrap">
+        <input aria-label="기타 선택 이유" class="other-input" id="q10-other" placeholder="기타 이유를 입력해주세요"/>
+       </div>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        <span class="qno">
+         Q12.
+        </span>
+        아래와 같은 현대자동차 Pleos Connect 화면을 본 적이 있나요?
+        <span class="required">
+         필수
+        </span>
+       </p>
+       <p class="desc">
+        화면을 보신 경험과 실제 사용 경험을 구분해 주세요.
+       </p>
+       <figure class="pleos-figure">
+        <img alt="현대자동차 Pleos Connect 차량 화면에서 Gleo 음성 어시스턴트와 목적지 검색 기능이 표시된 모습" loading="lazy" src="/assets/pleos.png">
+         <figcaption>
+          Pleos Connect 화면 예시
+         </figcaption>
+        </img>
+       </figure>
+       <div class="choices single-column" id="q11-options">
+       </div>
+      </div>
+     </section>
+     <section class="section" id="prize-section">
+      <div class="section-head">
+       <span class="index">
+        05
+       </span>
+       <div>
+        <h2>
+         경품 추첨 신청
+         <span class="opt">
+          선택
+         </span>
+        </h2>
+        <p class="sub">
+         설문에 참여해 주셔서 감사합니다. 참여를 원하시는 분만 연락처를 남겨주세요.
+        </p>
+       </div>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        모바일 기프티콘 추첨에 참여하시겠나요?
+        <span class="opt">
+         선택
+        </span>
+       </p>
+       <div class="choices" id="prize-options">
+       </div>
+       <p class="desc" id="prize-availability" role="status">
+       </p>
+      </div>
+      <p class="privacy-note" id="prize-details" hidden>조사 기간에는 경품 추첨에 참여하는 분께 휴대전화번호와 개인정보 수집·이용 동의를 받았습니다.</p>
+     </section>
+     <section class="section" hidden="" id="interview-section">
+      <div class="section-head">
+       <span class="index">
+        06
+       </span>
+       <div>
+        <h2>
+         Pleos Connect 사용자 인터뷰
+         <span class="opt">
+          선택 응답
+         </span>
+        </h2>
+        <p class="sub">
+         실제로 Pleos Connect를 사용한 경험이 있는 분께만 질문드립니다.
+        </p>
+       </div>
+      </div>
+      <div class="question">
+       <p class="q-head">
+        Pleos Connect 사용 경험이 있다면, 향후 인터뷰에 응할 의향이 있으신가요?
+        <span class="opt">
+         선택
+        </span>
+       </p>
+       <p class="desc">
+        인터뷰 참여 의향 확인용 질문이며, 현재 연락처를 별도로 수집하지 않습니다.
+       </p>
+       <div class="choices" id="interview-options">
+       </div>
+      </div>
+     </section>
+     <div class="feedback" id="feedback" role="status"></div>
+    </div>
+   </div>
+   <footer class="footer">
+    OKIKI · 차 안의 시간을 생각합니다.
+   </footer>
+  </div>
+  <script>
+
+(() => {
+    const data = {
+        q1: ['출퇴근·통학', '업무', '데이트', '여행·드라이브', '쇼핑·일상 용무', '가족 관련 이동', '기타'],
+        q2: ['혼자', '연인·배우자', '친구·지인', '자녀', '부모님·가족', '직장 동료', '기타'],
+        q5: ['빠르고 효율적인 이동', '편안한 이동과 휴식', '즐거움과 재미', '동승자와의 소통', '음악·영상 등 콘텐츠 감상', '새로운 장소 및 경험 발견', '안전과 안심', '기타'],
+        q8: ['정차 중 차량 화면으로 일행이 함께하는 여행 파티게임', '함께 이동하는 차끼리 위치를 공유하고 음성으로 소통', '주차 중 차 안에서 쉬는 시간을 위한 휴식 모드', '반려동물 동승 케어 (상태·온도·동반 장소 안내)', '차 안 통화·회의 기록과 실시간 번역', '동승자 사이 분위기를 풀어주는 AI', '기타'],
+        q9: ['차량 기본 시스템(내비게이션·미디어 등)', 'Pleos Connect', 'Tesla 차량 기본 시스템', 'Apple CarPlay / Android Auto', '스마트폰을 직접 사용', '아무것도 사용하지 않음'],
+        q10: ['익숙하고 조작하기 편리해서', '내비게이션·목적지 검색이 편리해서', '음악·콘텐츠 이용이 편리해서', '스마트폰과의 연동이 좋아서', '차량 자체 기능과 연동이 좋아서', '별도의 연결이나 설정이 필요하지 않아서', '다른 시스템을 사용할 수 없어서', '평소 사용하던 앱을 그대로 이용할 수 있어서', '특별한 이유 없이 습관적으로 사용해서', '기타'],
+        q11: ['현재 사용 중', '사용해 본 적 있음', '화면을 본 적은 있지만 사용해 본 적 없음', '이번에 처음 봄'],
+        age: ['20대 미만', '20대', '30대', '40대', '50대 이상', '응답하고 싶지 않음'],
+        interview: ['인터뷰에 응할 의향이 있습니다', '인터뷰에 응할 의향이 없습니다'],
+        prize: ['추첨에 참여할게요', '설문만 참여할게요']
+    };
+    const $ = id => document.getElementById(id);
+    function build(id, values, type) { const target = $(id + '-options'); target.replaceChildren(); if (!values.length) {
+        const e = document.createElement('p');
+        e.className = 'empty';
+        e.textContent = id === 'q3' ? 'Q1을 먼저 선택해주세요.' : 'Q2를 먼저 선택해주세요.';
+        target.append(e);
+        return;
+    } values.forEach((v, i) => { const label = document.createElement('label'); label.className = 'option ' + (type === 'radio' ? 'radio' : ''); const inp = document.createElement('input'); inp.type = type; inp.name = id; inp.value = v; inp.id = id + '-' + i; const face = document.createElement('span'); face.className = 'face'; const mark = document.createElement('span'); mark.className = 'mark'; mark.setAttribute('aria-hidden', 'true'); const txt = document.createElement('span'); txt.textContent = v; face.append(mark, txt); label.append(inp, face); target.append(label); }); }
+    Object.keys(data).forEach(id => build(id, data[id], ['q9', 'q11', 'age', 'interview', 'prize'].includes(id) ? 'radio' : 'checkbox'));
+    function selected(id) { return [...document.querySelectorAll('input[name="' + id + '"]:checked')].map(el => el.value); }
+    function updateBranch(src, dst) {
+        const before = selected(dst)[0];
+        const values = selected(src);
+        build(dst, values, 'radio');
+        if (before && values.includes(before)) {
+            const el = [...document.querySelectorAll('input[name="' + dst + '"]')].find(x => x.value === before);
+            if (el)
+                el.checked = true;
+        }
+        updateOtherBranchLabel(src, dst);
+        updateScenario();
+    }
+    function updateOtherBranchLabel(src, dst) {
+        // '기타'라는 내부 값은 유지해도 실제 사용자에게는 입력한 문구가 표시되도록 함.
+        const other = [...document.querySelectorAll('input[name="' + dst + '"]')].find(x => x.value === '기타');
+        if (!other)
+            return;
+        const display = other.parentElement.querySelector('.face span:last-child');
+        if (display)
+            display.textContent = $(src + '-other').value.trim() || '기타 (직접 입력)';
+    }
+    function updateScenario() { const p = selected('q3')[0], c = selected('q4')[0]; $('scenario-hint').textContent = p && c ? '선택한 대표 이용 상황: ' + otherValue('q1', p) + ' / ' + otherValue('q2', c) + ' · 이 상황을 떠올리며 답변해주세요.' : 'Q4와 Q5를 선택하면 여기에 대표 이용 상황이 표시됩니다.'; }
+    function showOther(id) { const checked = selected(id).includes('기타'); $(id + '-other-wrap').hidden = !checked; if (!checked)
+        $(id + '-other').value = ''; }
+    ['q1', 'q2', 'q5', 'q8', 'q10'].forEach(id => $(id + '-options').addEventListener('change', () => showOther(id)));
+    $('q1-options').addEventListener('change', () => updateBranch('q1', 'q3'));
+    $('q2-options').addEventListener('change', () => updateBranch('q2', 'q4'));
+    $('q1-other').addEventListener('input', () => { updateOtherBranchLabel('q1', 'q3'); updateScenario(); });
+    $('q2-other').addEventListener('input', () => { updateOtherBranchLabel('q2', 'q4'); updateScenario(); });
+    $('q3-options').addEventListener('change', updateScenario);
+    $('q4-options').addEventListener('change', updateScenario);
+    function capChoices(id, max, countId, noneValue) { $(id + '-options').addEventListener('change', e => { let picks = selected(id); if (noneValue && e.target.checked) {
+        if (e.target.value === noneValue) {
+            document.querySelectorAll('input[name="' + id + '"]:checked').forEach(x => { if (x !== e.target)
+                x.checked = false; });
+        }
+        else {
+            document.querySelectorAll('input[name="' + id + '"]:checked').forEach(x => { if (x.value === noneValue)
+                x.checked = false; });
+        }
+        picks = selected(id);
+    } if (picks.length > max) {
+        e.target.checked = false;
+        picks = selected(id);
+        $('feedback').textContent = ('Q' + (Number(id.slice(1)) + 1)) + '는 최대 ' + max + '개까지 선택할 수 있어요.';
+    }
+    else
+        $('feedback').textContent = ''; $(countId).textContent = picks.length + ' / ' + max; if (id === 'q5' || id === 'q8')
+        showOther(id); }); }
+    capChoices('q5', 2, 'q5-counter');
+    capChoices('q8', 2, 'q8-counter');
+    $('q9-options').addEventListener('change', () => { const show = !!selected('q9').length && selected('q9')[0] !== '아무것도 사용하지 않음'; $('q10-question').hidden = !show; if (!show) {
+        document.querySelectorAll('input[name="q10"]').forEach(x => x.checked = false);
+        showOther('q10');
+    } });
+    function updateInterview() { const experienced = ['현재 사용 중', '사용해 본 적 있음'].includes(selected('q11')[0]); $('interview-section').hidden = !experienced; if (!experienced)
+        document.querySelectorAll('input[name="interview"]').forEach(x => x.checked = false); }
+    $('q11-options').addEventListener('change', updateInterview);
+    $('prize-options').addEventListener('change', () => { $('prize-details').hidden = selected('prize')[0] !== '추첨에 참여할게요'; });
+    const otherValue = (id, v) => v === '기타' && $(id + '-other').value.trim() ? ('기타: ' + $(id + '-other').value.trim()) : v;
+    const previewNotice = document.querySelector('.survey-preview-notice');
+    setTimeout(() => { previewNotice.hidden = true; }, 4500);
+    let departing = false, car = null;
+    function revealSurvey() { previewNotice.hidden = true; $('start-page').hidden = true; $('survey-page').hidden = false; window.scrollTo(0, 0); const title = document.querySelector('#survey-page h1'); title.tabIndex = -1; title.focus(); }
+    $('start-btn').addEventListener('click', async () => { if (departing)
+        return; departing = true; $('start-btn').disabled = true; $('start-btn').textContent = '출발하는 중…'; try {
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
+            await Promise.race([car?.depart?.() || new Promise(r => setTimeout(r, 400)), new Promise(r => setTimeout(r, 1450))]);
+    }
+    catch { } revealSurvey(); });
+    ['q6', 'q7-extra'].forEach(id => { $(id).maxLength = 5000; $(id).setAttribute('aria-label', id === 'q6' ? 'Q7 원하는 기능 및 서비스' : 'Q8 자유 의견'); });
+    ['q1', 'q2', 'q5', 'q8', 'q10'].forEach(id => $(id + '-other').maxLength = 500);
+    document.querySelectorAll('.question').forEach((q, i) => { const label = q.querySelector('.q-head'); const choices = q.querySelector('.choices'); if (label && choices) {
+        label.id = 'question-label-' + i;
+        choices.setAttribute('role', 'group');
+        choices.setAttribute('aria-labelledby', label.id);
+    } });
+    import('/car.js?v=4').then(async (m) => { car = await m.createCar($('car-canvas'), $('car-fallback'));  }).catch(() => { });
+})();
+
+  </script>
+ </body>
+</html>

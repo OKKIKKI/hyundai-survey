@@ -1,0 +1,222 @@
+/* ==========================================================
+   OKIKI · Site Styles
+   설문 시작 / 완료 / 관리자 화면의 추가 스타일
+   기존 공통 CSS 다음에 불러오는 파일입니다.
+   ========================================================== */
+
+/* 01. Brand & common landing layout */
+.logo {
+  text-decoration: none;
+  font-size: 23px;
+  letter-spacing: -1px;
+  color: #142d4a;
+}
+
+.nav .logo { display: inline-flex; gap: 6px; align-items: baseline; }
+.brand-dot { color: #1769cf; }
+
+.landing {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.landing h1 {
+  margin: 18px 0 26px;
+  color: #152a44;
+  font-size: clamp(42px, 8vw, 68px);
+  line-height: 1.18;
+  letter-spacing: -0.065em;
+}
+
+.landing h1 span { color: #1769cf; }
+
+.landing p {
+  color: #5d6878;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.landing strong { color: #233d59; }
+
+.landing .lead {
+  color: #344c65;
+  font-size: 18px;
+}
+
+.landing .eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+
+.micro {
+  color: #738194 !important;
+  font-size: 12px !important;
+}
+
+.mobile-break { display: none; }
+
+/* 02. 3D vehicle stage */
+.car-stage {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin: 12px auto 8px;
+  overflow: hidden;
+}
+
+.car-stage canvas,
+.car-stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.car-stage canvas { z-index: 2; }
+
+.road {
+  position: absolute;
+  right: 8%;
+  bottom: 25px;
+  left: 8%;
+  height: 70px;
+  border-bottom: 1px solid #ccd7e4;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #dfe7f1, transparent 70%);
+}
+
+.stage-label {
+  position: absolute;
+  right: 12px;
+  bottom: 2px;
+  color: #7b8da2;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+}
+
+/* 03. Buttons, feedback & shared utilities */
+.start-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%, 360px);
+  margin: 20px auto 0;
+  padding: 17px 22px;
+  border-radius: 10px;
+  font-size: 16px;
+
+}
+
+.start-btn span { font-size: 22px; }
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.option input:disabled + .face {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.feedback {
+  color: #a13723;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.actions { position: relative; }
+.actions .primary { min-width: 180px; }
+/* Compact reference layout; only active while the start screen is visible. */
+.start-shell{display:contents}
+.start-shell:has(#start-page:not([hidden])){display:block;border:1px solid #dedede;border-radius:15px;background:#fff;padding:10px 10px 8px;max-width:680px;margin:0 auto}
+.start-shell:has(#start-page:not([hidden])) .nav{margin:0 0 22px;min-height:20px;gap:10px}
+.start-shell:has(#start-page:not([hidden])) .logo{font-size:14px;color:#142d4a;letter-spacing:-.5px}
+.start-shell:has(#start-page:not([hidden])) .brand-dot{color:#142d4a}
+.start-shell:has(#start-page:not([hidden])) .tag{background:none;border:0;padding:0;color:#777;font-size:10px}
+#start-page{border:0;border-radius:0;background:transparent;padding:0;max-width:none;margin:0}
+#start-page .eyebrow{font-size:9px;letter-spacing:0;color:#1769cf;margin:0 0 5px}
+#start-page h1{font-size:23px;line-height:1.3;margin:0 0 8px;color:#152a44;letter-spacing:-.04em}
+#start-page h1 span{color:#1769cf}
+#start-page .start-intro p{font-size:12px;line-height:1.7;margin:0;color:#666}
+#start-page .car-stage{height:180px;width:100%;margin:2px auto 0}
+#start-page .car-stage canvas{width:100%;height:100%;left:0}
+#start-page .car-stage img{width:min(70%,340px);height:100%;min-width:0;left:50%;transform:translateX(-50%);object-fit:contain}
+#start-page .road{left:50%;right:auto;transform:translateX(-50%);width:min(55%,260px);height:22px;bottom:20px}
+#start-page .stage-label{display:none}
+#start-page .start-btn{width:100%;max-width:none;justify-content:center;gap:12px;margin:0;padding:10px 16px;min-height:42px;border-radius:10px;font-size:13px}
+#start-page .start-btn span{font-size:15px}
+#start-page .survey-overview{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;background:none;padding:0;margin:7px 0 0;max-width:none;border-radius:0}
+#start-page .survey-overview p{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:4px;padding:0;margin:0;font-size:10px;line-height:1.5;color:#777;border:0}
+#start-page .survey-overview p+p{padding:0;border:0}
+#start-page .survey-overview svg{width:11px;height:11px;stroke:currentColor}
+#start-page .event-note{margin:8px 0 0;padding:0;border:0}
+#start-page .event-note:has(#event-details[hidden]){display:none}
+@media(max-width:480px){.start-shell:has(#start-page:not([hidden])){padding:10px 9px 8px}#start-page h1{font-size:22px}#start-page .start-intro p{font-size:11px}#start-page .car-stage{height:150px}#start-page .survey-overview{gap:7px}#start-page .survey-overview p{font-size:9px}}
+
+/* Start-page readability and breathing room. */
+.start-shell:has(#start-page:not([hidden])){padding:16px 16px 26px;margin:0 auto 24px}
+.start-shell:has(#start-page:not([hidden])) .logo{font-size:18px}
+.start-shell:has(#start-page:not([hidden])) .brand-dot{color:#1769cf}
+.start-shell:has(#start-page:not([hidden])) .tag{font-size:12px}
+#start-page .eyebrow{font-size:11px}
+#start-page h1{font-size:28px;margin-bottom:10px}
+#start-page .start-intro p{font-size:14px;line-height:1.6}
+#start-page .start-btn{font-size:16px;min-height:48px;padding:12px 16px}
+#start-page .start-btn span{font-size:18px}
+#start-page .survey-overview{margin-top:12px;gap:12px}
+#start-page .survey-overview p{font-size:12px}
+#start-page .survey-overview svg{width:14px;height:14px}
+@media(max-width:480px){.start-shell:has(#start-page:not([hidden])){padding:14px 12px 24px;margin-bottom:22px}#start-page h1{font-size:26px}#start-page .start-intro p{font-size:13px}#start-page .survey-overview{gap:8px 12px}#start-page .survey-overview p{font-size:11px}}
+
+/* Fine spacing and scale adjustments for the start card. */
+.start-shell:has(#start-page:not([hidden])){margin-bottom:36px}
+#start-page .eyebrow{padding-top:10px}
+#start-page h1{font-size:31px}
+#start-page .car-stage{height:200px}
+@media(max-width:480px){.start-shell:has(#start-page:not([hidden])){margin-bottom:32px}#start-page h1{font-size:29px}#start-page .car-stage{height:168px}}
+
+/* Slightly more space and scale. */
+.start-shell:has(#start-page:not([hidden])){margin-bottom:46px}
+#start-page .eyebrow{padding-top:16px}
+#start-page h1{font-size:clamp(29px,5vw,41px)}
+#start-page .car-stage{height:220px}
+@media(max-width:480px){.start-shell:has(#start-page:not([hidden])){margin-bottom:40px}#start-page .car-stage{height:184px}}
+
+/* Extra space below the participation facts, inside the card. */
+.start-shell:has(#start-page:not([hidden])){padding-bottom:26px}
+@media(max-width:480px){.start-shell:has(#start-page:not([hidden])){padding-bottom:24px}}
+
+/* A little more room between the heading and introduction. */
+#start-page h1{margin-bottom:18px}
+@media(max-width:620px){#start-page h1{font-size:30px}#survey-page .hero .intro{font-size:13px}}
+
+#done-title { font-size: clamp(30px, 6vw, 42px); }
+
+
+#done-page .lead { margin-bottom: 0; }
+#done-page .lead + p { margin-top: 0; margin-bottom: 24px; }
+
+#done-title::before,
+#done-title::after {
+  content: "";
+  display: block;
+  width: min(112px, 60%);
+  margin-inline: auto;
+  border-top: 2px dashed #c4d5e8;
+}
+#done-title::before { margin-bottom: 12px; }
+#done-title::after { margin-top: 12px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  #done-page:not([hidden]) #done-title::before,
+  #done-page:not([hidden]) #done-title::after {
+    animation: done-road-reveal .55s ease-out both;
+  }
+  #done-page:not([hidden]) #done-title::after { animation-delay: .12s; }
+}
+@keyframes done-road-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0); }
+}

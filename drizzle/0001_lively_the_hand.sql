@@ -1,0 +1,1 @@
+ALTER TABLE `contacts` ADD `shipment_completed_at` text;
